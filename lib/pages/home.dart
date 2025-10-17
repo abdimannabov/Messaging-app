@@ -4,7 +4,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:message_app/pages/chats.dart';
 import 'package:message_app/pages/contacts.dart';
 import 'package:message_app/pages/settings.dart';
-
 import '../blocs/sign_in_bloc/sign_in_bloc.dart';
 
 class Home extends StatefulWidget {

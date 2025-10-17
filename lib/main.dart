@@ -1,22 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:message_app/auth/login_or_register.dart';
-import 'package:message_app/pages/login_page.dart';
-import 'package:message_app/pages/register_page.dart';
-import 'package:message_app/themes/light_mode.dart';
+import 'package:user_repository/user_repository.dart';
+import 'app.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightMode,
-      home: LoginOrRegister(),
-    );
-  }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp(FirebaseUserRepo()));
 }

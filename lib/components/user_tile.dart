@@ -12,13 +12,29 @@ class UserTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            const Icon(Icons.person),
-            const SizedBox(width: 12),
-            Expanded(child: Text(text)),
-          ],
+        padding: const EdgeInsets.only(top:8.0),
+        child: Container(
+          height: 60,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white10,
+            border: Border.all(color: Colors.black12, width: 1.4),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left:32.0),
+            child: Row(
+              children: [
+                const Icon(Icons.person, size: 32,),
+                const SizedBox(width: 12),
+                Expanded(child: Text(
+                  text,
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                )),
+              ],
+            ),
+          ),
         ),
       ),
     );

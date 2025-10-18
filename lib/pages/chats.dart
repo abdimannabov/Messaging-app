@@ -9,7 +9,22 @@ class Chats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _builderUserList();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            'Chats',
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.black87,
+            ),
+          ),
+        ),
+        Expanded(child: _builderUserList()),
+      ],
+    );
   }
 
   Widget _builderUserList() {
@@ -56,16 +71,20 @@ class Chats extends StatelessWidget {
     final email = userData['email'] as String? ?? '';
     final isCurrent = userData['isCurrent'] as bool? ?? false;
 
-    return UserTile(
-      text: isCurrent ? '$email (you)' : email,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ChatPage(receiverEmail: userData['email']),
-          ),
-        ); // Handle user tap
-      },
-    );
+    if (!isCurrent) {
+      return UserTile(
+        text: email,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatPage(receiverEmail: userData['email']),
+            ),
+          ); // Handle user tap
+        },
+      );
+    } else {
+      return const SizedBox.shrink(); // Return empty widget for current user
+    }
   }
 }
